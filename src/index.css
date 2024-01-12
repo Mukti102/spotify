@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+*{
+  font-family: 'Inter', sans-serif;
+}
+.scroll-bar::-webkit-scrollbar{
+  -webkit-appearance: none;
+  width: 10px;
+  background-color: none;
+  position: absolute;
+  display: none;
+}
+.scroll-bar:hover::-webkit-scrollbar{
+  display: inline-block;
+}
+.scroll-bar::-webkit-scrollbar-thumb{
+  background-color: #444;
+}
