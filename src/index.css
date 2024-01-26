@@ -5,15 +5,49 @@
   font-family: 'Inter', sans-serif;
 }
 .scroll-bar::-webkit-scrollbar{
-  -webkit-appearance: none;
+  /* -webkit-appearance: none; */
   width: 10px;
-  background-color: none;
   position: absolute;
-  display: none;
+  opacity: 0 ;
+  background: transparent;
+  /* display: none; */
+}
+.scroll-bar::-webkit-scrollbar-track{
+  background: transparent;
 }
 .scroll-bar:hover::-webkit-scrollbar{
   display: inline-block;
 }
 .scroll-bar::-webkit-scrollbar-thumb{
   background-color: #444;
+  /* display: none; */
+}
+
+.track{
+  -webkit-appearance: none;
+  border-radius: 50px;
+}
+
+.track::-webkit-slider-thumb{
+  -webkit-appearance: none;
+  width: 10px;
+  height: 10px;
+  background-color: aliceblue;
+  border-radius: 50px;
+  /* display: none; */
+  cursor: pointer;
+}
+
+.volume{
+  -webkit-appearance: none;
+  border-radius: 50px;
+}
+
+.volume::-webkit-slider-thumb{
+  -webkit-appearance: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50px;
+  cursor: pointer;
+  background-color: white;
 }
