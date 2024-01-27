@@ -4,7 +4,7 @@ import Library from "../organism/Library";
 
 function Sidebar() {
   return (
-    <div className="h-full  flex flex-col gap-2 rounded-lg">
+    <div className="h-full  w-[23%]  flex flex-col gap-2 rounded-lg">
       <Navbar />
       <Library />
     </div>

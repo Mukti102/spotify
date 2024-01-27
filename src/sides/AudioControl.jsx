@@ -9,17 +9,26 @@ function AudioControl() {
   const track = useStore((state) => state.track);
   const setTrack = useStore((state) => state.setTrack);
   const audio = useRef(new Audio());
+  const [mute, setMute] = useState(false);
+  const handleMute = () => {
+    setMute(!mute);
+    !mute ? (audio.current.muted = true) : (audio.current.muted = false);
+  };
   const { data, isLoading } = useQuery(`tracks/${idTrack}`, idTrack);
   useEffect(() => {
     setTrack(data?.data);
   }, [idTrack, data]);
-  return (
-    <div className="w-full h-[15%] items-center flex justify-between px-4 ">
-      <CurrentSong item={track} />
-      <ControlSong track={track?.preview_url} audio={audio} />
-      <VolumeSong audio={audio} />
-    </div>
-  );
+  if (track && isLoading === false) {
+    return (
+      <div className="w-full h-[15%] items-center flex justify-between px-4 ">
+        <CurrentSong item={track} />
+        <ControlSong track={track?.preview_url} audio={audio} />
+        <VolumeSong audio={audio} handleMute={handleMute} mute={mute} />
+      </div>
+    );
+  } else {
+    <></>;
+  }
 }
 
 export default AudioControl;

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { BiSolidVolumeFull } from "react-icons/bi";
+import { BiSolidVolumeFull, BiSolidVolumeMute } from "react-icons/bi";
 
-function VolumeSong({ audio }) {
+function VolumeSong({ audio, mute, handleMute }) {
   const [volume, setVolume] = useState(audio.current.volume);
   const style = {
     background: `linear-gradient(to right, white ${volume * 100}%,#333 ${
@@ -16,8 +16,11 @@ function VolumeSong({ audio }) {
   };
   return (
     <div className="w-[25%] flex items-center justify-end h-full">
-      <button className="px-2 hover:text-white text-sm text-secondary">
-        <BiSolidVolumeFull />
+      <button
+        onClick={handleMute}
+        className="px-2 hover:text-white text-sm text-secondary"
+      >
+        {mute ? <BiSolidVolumeMute /> : <BiSolidVolumeFull />}
       </button>
       <input
         type="range"

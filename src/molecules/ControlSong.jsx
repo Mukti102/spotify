@@ -36,8 +36,8 @@ function ControlSong({ track, audio }) {
   };
 
   useEffect(() => {
-    audio.current.src = track;
     setPlay(false);
+    audio.current.src = track;
     audio.current.addEventListener("timeupdate", () =>
       setCurrentTime(audio.current.currentTime)
     );
