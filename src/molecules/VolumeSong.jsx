@@ -1,15 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { BiSolidVolumeFull } from "react-icons/bi";
 
 function VolumeSong({ audio }) {
+  const [volume, setVolume] = useState(audio.current.volume);
   const style = {
-    background: `linear-gradient(to right, white ${
-      audio.current.volume * 100
-    }%,#333 ${audio.current.volume}%)`,
+    background: `linear-gradient(to right, white ${volume * 100}%,#333 ${
+      audio.current.volume
+    }%)`,
   };
   const handleChange = (e) => {
+    setVolume(e.target.value);
     if (audio.current) {
-      audio.current.volume = e.target.value;
+      audio.current.volume = volume;
     }
   };
   return (
@@ -19,7 +21,7 @@ function VolumeSong({ audio }) {
       </button>
       <input
         type="range"
-        value={audio.current.volume}
+        value={volume}
         min={0}
         max={1}
         step={0.1}
