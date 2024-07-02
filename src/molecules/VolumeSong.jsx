@@ -15,7 +15,7 @@ function VolumeSong({ audio, mute, handleMute }) {
     }
   };
   return (
-    <div className="w-[25%] flex items-center justify-end h-full">
+    <div className="w-[25%] hidden sm:flex items-center justify-end h-full">
       <button
         onClick={handleMute}
         className="px-2 hover:text-white text-sm text-secondary"

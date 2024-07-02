@@ -1,10 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import { IoIosPause, IoIosPlay } from "react-icons/io";
 import { BiSkipPrevious, BiSkipNext } from "react-icons/bi";
-import { msToMinSec } from "../utils/function/msToMinutesAndSecond";
+
 function ControlSong({ track, audio }) {
   const [currentTime, setCurrentTime] = useState(null);
-  const [play, setPlay] = useState(false);
+  const [play, setPlay] = useState(true);
+
   const style = {
     background: `linear-gradient(to right,white ${hitungPersentase(
       audio.current.currentTime,
@@ -18,13 +19,13 @@ function ControlSong({ track, audio }) {
   }
 
   const onPlay = () => {
-    setPlay(!play);
+    setPlay((prevPlay) => !prevPlay);
     if (
       audio.current.src === `http://localhost:5173/spotify/playlist/null` ||
       track === null
     ) {
-      alert("song i not available");
       setPlay(false);
+      alert("song i not available");
       return;
     } else {
       if (play) {
@@ -55,29 +56,27 @@ function ControlSong({ track, audio }) {
   const handleChange = (e) => {
     audio.current.currentTime = e.target.value;
   };
-  const handleDuration = (duration) => {
-    const minutes = parseInt(String(duration).split(".")[0]);
-    const second = parseInt(msToMinSec(String(duration).split(".")[1]));
-    return `${parseInt(minutes)} : ${parseInt(second)}`;
-  };
+  const handleCurrentTime = (time) => (time >= 10 ? time : `0${time}`);
   return (
-    <div className="w-[50%] flex flex-col justify-center items-center h-full">
+    <div className="sm:w-[50%] h-max flex  w-[20%] sm:flex flex-col justify-center items-center sm:h-full">
       <div className="flex gap-3 items-center">
-        <button className="p-1  items-center rounded-full flex justify-center text-3xl text-secondary">
+        <button className="p-1  items-center rounded-full hidden sm:flex justify-center text-3xl text-secondary">
           <BiSkipPrevious />
         </button>
         <button
           onClick={onPlay}
-          className=" bg-white w-8 h-8 items-center rounded-full flex justify-center text-2xl text-black"
+          className=" bg-white  w-8 h-8 items-center rounded-full flex justify-center text-2xl text-black"
         >
           {play ? <IoIosPause /> : <IoIosPlay />}
         </button>
-        <button className="p-1  items-center rounded-full flex justify-center text-3xl text-secondary">
+        <button className="p-1 hidden  items-center rounded-full sm:flex justify-center text-3xl text-secondary">
           <BiSkipNext />
         </button>
       </div>
-      <div className="flex gap-2 justify-center w-full items-center">
-        <span className="text-[10px] text-[#999]">{"0:00"}</span>
+      <div className="hidden sm:flex gap-2 justify-center w-full items-center">
+        <span className="text-[10px] text-[#999]">
+          0:{handleCurrentTime(currentTime?.toFixed("."))}
+        </span>
         <input
           type="range"
           value={currentTime}
@@ -89,7 +88,8 @@ function ControlSong({ track, audio }) {
           style={style}
         />
         <span className="text-[10px] text-[#999]">
-          {handleDuration(audio.current.duration)}
+          0:
+          {audio.current.duration ? audio.current.duration.toFixed(".") : "30"}
         </span>
       </div>
     </div>

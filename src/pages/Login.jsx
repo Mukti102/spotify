@@ -10,7 +10,7 @@ function Login() {
     const clientId = `2519e3e45f514f058835ac9e90f2cf92`;
     const apiUrl = "https://accounts.spotify.com/authorize";
     window.location.href = `${apiUrl}?client_id=${clientId}&redirect_uri=${redirectUrl}&scopes=${scopes.join(
-      " "
+      ""
     )}&response_type=token&show_dialog=true`;
   };
 

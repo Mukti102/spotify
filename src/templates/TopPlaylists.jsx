@@ -16,7 +16,7 @@ function TopPlaylists({ url, Title, showAll }) {
   return (
     <div className="w-full h-full mb-6">
       <Header Title={Title} showAll={showAll} />
-      <div className="w-full flex-wrap flex gap-3">
+      <div className="sm:w-full w-max flex-wrap flex sm:gap-3 gap-1">
         {playlists?.map((item, index) => {
           return <Card item={item} key={index} />;
         })}

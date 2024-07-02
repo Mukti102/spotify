@@ -6,7 +6,7 @@ function Card({ item }) {
   return (
     <NavLink
       to={`/spotify/playlist/${item?.id}`}
-      className="w-48 cursor-pointer rounded-md group overflow-hidden h-[270px] p-2  mt-3 bg-[#222]"
+      className="sm:w-48 w-44 cursor-pointer rounded-md group overflow-hidden sm:h-[270px] p-2  mt-3 bg-[#222]"
     >
       <div className="w-full relative h-44  bg-[#222] rounded-md overflow-hidden">
         <img

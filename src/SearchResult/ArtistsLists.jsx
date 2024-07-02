@@ -15,7 +15,7 @@ function ArtistsLists() {
   }, [data]);
   return (
     <div className="w-full bg-primary bg-opacity-15 p-5 absolute right-0 h-full">
-      <div className="w-full flex flex-wrap gap-3 p-3">
+      <div className="w-full  flex flex-wrap gap-3 p-3">
         {results?.map((item, index) => {
           return <CardArtist item={item} key={index} />;
         })}

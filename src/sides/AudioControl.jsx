@@ -20,7 +20,7 @@ function AudioControl() {
   }, [idTrack, data]);
   if (track && isLoading === false) {
     return (
-      <div className="w-full h-[15%] items-center flex justify-between px-4 ">
+      <div className="w-full  sm:h-[15%] h-[10%] sm:static fixed right-0 left-0 items-center flex justify-between px-4 ">
         <CurrentSong item={track} />
         <ControlSong track={track?.preview_url} audio={audio} />
         <VolumeSong audio={audio} handleMute={handleMute} mute={mute} />

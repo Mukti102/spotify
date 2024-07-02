@@ -7,7 +7,7 @@ function Home() {
   return (
     <>
       <Header input={false} />
-      <div className="w-full bg-primary bg-opacity-15 p-5 absolute right-0 h-full">
+      <div className="w-full overflow-hidden bg-primary bg-opacity-15 p-5 absolute right-0 sm:h-full">
         {/* <Sponsored /> */}
         <PlaylistHome />
         <TopPlaylists
@@ -15,11 +15,11 @@ function Home() {
           Title={"Featured Playlists"}
           showAll={false}
         />
-        {/* <TopPlaylists
+        <TopPlaylists
           url={"browse/categories/dinner/playlists?limit=4"}
           Title={"Dinner Playlists"}
           showAll={true}
-        /> */}
+        />
       </div>
     </>
   );
