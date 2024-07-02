@@ -6,7 +6,7 @@ function Login() {
   const token = useStore((state) => state.token);
   const navigate = useNavigate();
   const handleClick = () => {
-    const redirectUrl = "https://spotify-woad-psi.vercel.app/";
+    const redirectUrl = "http://localhost:5173/";
     const clientId = `2519e3e45f514f058835ac9e90f2cf92`;
     const apiUrl = "https://accounts.spotify.com/authorize";
     window.location.href = `${apiUrl}?client_id=${clientId}&redirect_uri=${redirectUrl}&scopes=${scopes.join(
